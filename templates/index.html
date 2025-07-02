@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .form {
+            margin: 20px 0;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .recommendations {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e8;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+        }
+        .error {
+            background-color: #ffe8e8;
+            border-left: 4px solid #f44336;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .developer {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Intelligent Book Recommendation System</h1>
+        <p class="developer">Developed By Sudais Khalid</p>
+        <p>Enter book details to get personalized recommendations</p>
+        
+        <form method="post" action="/recommend" class="form">
+            <div class="form-group">
+                <label for="book_title">Book Title or Author:</label>
+                <input type="text" id="book_title" name="book_title" 
+                       placeholder="Enter a book title or author name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="language">Preferred Language:</label>
+                <select id="language" name="language">
+                    <option value="">Any Language</option>
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="it">Italian</option>
+                    <option value="pt">Portuguese</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="min_rating">Minimum Rating:</label>
+                <select id="min_rating" name="min_rating">
+                    <option value="0">Any Rating</option>
+                    <option value="3.5">3.5+</option>
+                    <option value="4.0" selected>4.0+</option>
+                    <option value="4.5">4.5+</option>
+                </select>
+            </div>
+
+            <button type="submit">Get Recommendations</button>
+        </form>
+        
+        {% if recommendations %}
+            <div class="recommendations">
+                <h2>Recommended Books:</h2>
+                <ul>
+                {% for book in recommendations %}
+                    <li>
+                        <strong>{{ book.title }}</strong> by {{ book.authors }}<br>
+                        Rating: {{ book.average_rating }}/5 
+                        ({{ book.ratings_count }} ratings)
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% elif error_message %}
+            <div class="recommendations error">
+                <h2>Error:</h2>
+                <p>{{ error_message }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
