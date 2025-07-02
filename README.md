@@ -431,13 +431,14 @@ pip install scikit-learn
 - 🐛 **Issues**: [Create an issue](https://github.com/yourusername/book-recommendation-system/issues)
 - 💬 **Discussions**: [Join discussions](https://github.com/yourusername/book-recommendation-system/discussions)
 - 📧 **Email**: msudaiskhalid.ai@gmail.com
+- 💬 **Discord**: [Join Discord](https://discord.gg/cfjfrec9)
 
 ### Developer
 **Sudais Khalid**
 - 🐙 **GitHub**: [@sudaiskhalid](https://github.com/muhammadsudaiskhalid)
-- 💼 **LinkedIn**: [Sudais Khalid](https://linkedin.com/in/sudaiskhalid)
+- 💼 **LinkedIn**: [Sudais Khalid](https://linkedin.com/in/sudais-khalid)
 - 🌐 **Portfolio**: [sudaiskhalid.dev](https://sudaiskhalid.com)
-- 📧 **Email**: msudaiskhalid.ai@example.com
+- 📧 **Email**: msudaiskhalid.ai@gmail.com
 
 ## 📄 License
 
